@@ -3,7 +3,7 @@ import { registrar, perfil } from '../controllers/Veterinario.js';
 
 const router = express.Router();
 
-router.get('/', registrar);
+router.post('/', registrar);
 
 router.get('/perfil', perfil);
 

@@ -13,6 +13,8 @@ const veterinarioSchema = mongoose.Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
+        trim: true,
     },
     telefono: {
         type: Number,
@@ -29,3 +31,4 @@ const veterinarioSchema = mongoose.Schema({
 });
 
 const Veterinario = mongoose.model('Veterinario', veterinarioSchema);
+export default Veterinario;
