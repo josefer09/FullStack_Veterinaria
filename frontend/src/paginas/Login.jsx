@@ -10,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [alerta, setAlerta] = useState({});
 
+  const {setAuth} = useAuth();
   const navigate = useNavigate();
 
   const handlerSubmit = async (e) => {
@@ -30,9 +31,10 @@ const Login = () => {
       console.log(data);
       // Guardar token en localstorage
       localStorage.setItem('token', data.token);
+      // Colocar la info del usuario en el state del auth
+      setAuth(data);
       setAlerta({});
       navigate('/admin');
-      return;
     } catch (error) {
       console.log(error.response);
       return setAlerta({
