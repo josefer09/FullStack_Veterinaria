@@ -1,8 +1,8 @@
 import { Outlet, Navigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
-import Header from "../context/Header";
-import Footer from "../context/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const RutaProtegida = () => {
   const { auth, cargando } = useAuth();
@@ -14,7 +14,7 @@ const RutaProtegida = () => {
     <>
       <Header />
       {auth?._id ? (
-        <main className="contaier mx-auto mt-10">
+        <main className="container mx-auto mt-10">
           <Outlet />
         </main>
       ) : (
