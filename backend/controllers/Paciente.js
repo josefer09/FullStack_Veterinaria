@@ -58,7 +58,7 @@ const actualizarPaciente = async (req, res) => {
       sintomas,
       veterinario,
     };
-    const paciente = await Paciente.findByIdAndUpdate(id, infoPaciente);
+    const paciente = await Paciente.findByIdAndUpdate(id, infoPaciente, {new: true});
 
     if (!paciente) {
       return res.status(404).json({ msg: "Paciente no encontrado" });
@@ -70,7 +70,7 @@ const actualizarPaciente = async (req, res) => {
     }
 
     const pacienteActualizado = await paciente.save();
-    res.status(200).json({ infoPaciente });
+    res.status(200).json(pacienteActualizado);
   } catch (error) {
     console.log(error);
   }

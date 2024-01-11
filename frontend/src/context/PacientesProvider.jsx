@@ -1,16 +1,19 @@
 import { createContext, useState, useEffect } from "react";
 import clienteAxios from "../../config/axios";
+import useAuth from "../hooks/useAuth";
 
 const PacientesContex = createContext();
 
 export const PacientesProvider = ({ children }) => {
   const [pacientes, setPacientes] = useState([]);
   const [paciente, setPaciente] = useState({});
+  const {auth} = useAuth();
 
   useEffect(() => {
     const obtenerPacientes = async () => {
       try {
         const token = localStorage.getItem("token");
+        if(!token) return;
         const config = {
           headers: {
             "Content-type": "application/json",
@@ -26,7 +29,7 @@ export const PacientesProvider = ({ children }) => {
       }
     };
     obtenerPacientes();
-  }, [pacientes]);
+  }, [auth]);
 
   // Guardar paciente en la db
   const guardarPaciente = async (paciente) => {
