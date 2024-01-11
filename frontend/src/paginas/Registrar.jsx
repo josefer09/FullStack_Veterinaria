@@ -44,7 +44,10 @@ const Registrar = () => {
         email,
         password,
       };
-      await clienteAxios.post('/veterinarios', veterinario);
+      console.log(veterinario);
+
+      const {data} = await clienteAxios.post('/veterinarios', veterinario);
+      console.log(data);
       setAlerta({msg: 'Usuario Registrado, Revisa tu email', error: false});
       // Usuario Registrado, limpiar form
       // setNombre('');
